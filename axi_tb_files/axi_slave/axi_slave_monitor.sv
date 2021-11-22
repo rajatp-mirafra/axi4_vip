@@ -30,9 +30,9 @@
 
 class AXI_slave_monitor extends uvm_monitor;
  
-virtual interface AXI_vif   ms_vif;
+virtual AXI_vif   ms_vif;
 
-AXI_transfer t_trx;
+axi_slave_trans t_trx;
 
   // component macro
   `uvm_component_utils(AXI_slave_monitor)
@@ -44,7 +44,7 @@ AXI_transfer t_trx;
   endfunction : new
   
  function void build_phase(uvm_phase phase);
-    if (!axi_vif_config::get(this,"","ms_vif", ms_vif))
+    if (!uvm_config_db# (virtual AXI_vif)::get(this,"","ms_vif", ms_vif))
       `uvm_fatal("NOVIF",{"virtual interface must be set for: ",get_full_name(),".ms_vif"})
   endfunction: build_phase
 
@@ -63,7 +63,7 @@ endclass : AXI_slave_monitor
   task AXI_slave_monitor::run_phase(uvm_phase phase);
     `uvm_info(get_type_name(), "Inside the run_phase", UVM_MEDIUM);
     forever begin
-       t_trx = AXI_transfer::type_id::create();
+       t_trx = axi_slave_trans::type_id::create();
        collect_write_transfer();
     end
   endtask : run_phase
@@ -91,7 +91,7 @@ endclass : AXI_slave_monitor
          t_trx.len     = ms_vif.AXI_AWLEN;
          t_trx.size    = ms_vif.AXI_AWSIZE;
          t_trx.burst   = ms_vif.AXI_AWBURST;
-         t_trx.addr_done = `TRUE;
+  //       t_trx.addr_done = `TRUE;
       end
   endtask : collect_addr_write_trx
 
@@ -110,7 +110,7 @@ endclass : AXI_slave_monitor
 
         if (ms_vif.AXI_WLAST == 1'b1) begin
          t_trx.wlast       = ms_vif.AXI_WLAST;
-          t_trx.data_done = `TRUE;
+    //      t_trx.data_done = `TRUE;
           $display("From Slave Monitor @ %g",$time);
           t_trx.print();
           j = t_trx.data.size();

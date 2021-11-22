@@ -141,7 +141,7 @@ constraint write_address_id_c {
     soft (ARCACHE!= 4 && ARCACHE != 5 && ARCACHE != 8 && ARCACHE != 9 && ARCACHE != 12 && ARCACHE != 13);   //As per Table A4-5 Memory type encoding
   }
           
-  function post_randomize();
+  function void post_randomize();
       int i, j;
       WDATA = new[AWLEN+1];
       WSTRB = new[AWLEN+1];

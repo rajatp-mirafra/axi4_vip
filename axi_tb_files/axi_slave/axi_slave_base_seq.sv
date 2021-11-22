@@ -28,7 +28,7 @@
 `ifndef AXI_SLAVE_BASE_SEQ_SV
 `define AXI_SLAVE_BASE_SEQ_SV
 
-class axi_slave_base_seq extends uvm_sequence#(AXI_transfer);
+class axi_slave_base_seq extends uvm_sequence#(axi_slave_trans);
   
   // Required macro for sequences automation
   `uvm_object_utils(axi_slave_base_seq)

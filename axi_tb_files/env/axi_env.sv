@@ -26,7 +26,7 @@ class axi_env extends uvm_env;
 	`uvm_component_utils (axi_env)
 	
 axi_master_agent master_agent;
-axi_slave_agent slave_agent;
+AXI_slave_agent slave_agent;
 axi_scoreboard scoreboard;
 AXI_OOO_scoreboard ooo_scoreboard;
 axi_tb_config tb_cfg;

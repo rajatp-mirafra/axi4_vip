@@ -30,23 +30,25 @@ import uvm_pkg::*;
 `include "uvm_macros.svh"
 
 //----------Including MASTER files----------
+`include "axi_master_trans.sv"
 `include "axi_base_sequence.sv"
-`include "axi_master_agent.sv"
 `include "axi_master_agent_config.sv"
 `include "axi_master_driver.sv"
 `include "axi_master_monitor.sv"
 `include "axi_master_sequencer.sv"
-`include "axi_master_trans.sv"
+`include "axi_master_agent.sv"
 
 //----------Including SLAVE files----------
-`include "axi_slave_agent.sv"
+`include "axi_slave_trans.sv"
 `include "axi_slave_base_seq.sv"
 `include "axi_slave_driver.sv"
 `include "axi_slave_monitor.sv"
 `include "axi_slave_sequencer.sv"
-`include "axi_slave_trans.sv"
+`include "axi_slave_agent.sv"
 
 //----------Including ENV files----------
+`include "AXI4_OOO_Scoreboard.sv"
+`include "AXI4_Scoreboard.sv"
 `include "axi_env.sv"
 `include "axi_env_config.sv"
 `include "axi_virt_seq.sv"
@@ -57,8 +59,7 @@ import uvm_pkg::*;
 
 //----------Including TEST files----------
 `include "axi_test.sv"
-`include "AXI4_OOO_Scoreboard.sv"
-`include "AXI4_Scoreboard.sv"
+
 
 //----------Including ASSERTION files----------
 `include "axi_assertion.sv"

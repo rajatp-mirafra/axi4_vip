@@ -28,9 +28,9 @@
 `ifndef AXI_SLAVE_DRIVER_SV
 `define AXI_SLAVE_DRIVER_SV
 
-class AXI_slave_driver extends uvm_driver #(AXI_transfer);
+class AXI_slave_driver extends uvm_driver #(axi_slave_trans);
 
-  virtual interface AXI_vif   ms_vif;
+  virtual AXI_vif   ms_vif;
 
 
  // component macro
@@ -42,7 +42,7 @@ class AXI_slave_driver extends uvm_driver #(AXI_transfer);
   endfunction : new
 
   function void build_phase(uvm_phase phase);
-    if (!axi_vif_config::get(this,"","ms_vif", ms_vif))
+    if (!uvm_config_db# (virtual AXI_vif)::get(this,"","ms_vif", ms_vif))
       `uvm_fatal("NOVIF",{"virtual interface must be set for: ",get_full_name(),".ms_vif"})
   endfunction: build_phase
 

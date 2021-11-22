@@ -194,8 +194,9 @@ class axi_wr_drvr extends axi_master_driver #(axi_master_trans);
 								   end
 						   end
 				   end
+				end
 		   endtask
-   endclass :AXI_WR_DRVR
+   endclass :axi_wr_drvr
 				
 ///////////////////////////////////////////////// READ DRIVER ///////////////////////////////////////////////
 

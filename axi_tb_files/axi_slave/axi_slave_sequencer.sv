@@ -28,7 +28,7 @@
 `ifndef AXI_SLAVE_SEQUENCER_SV
 `define AXI_SLAVE_SEQUENCER_SV
 
-class AXI_slave_sequencer extends uvm_sequencer #(AXI_transfer);
+class AXI_slave_sequencer extends uvm_sequencer #(axi_slave_trans);
 
   `uvm_component_utils_begin(AXI_slave_sequencer)
   `uvm_component_utils_end
